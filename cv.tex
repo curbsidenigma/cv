@@ -2,35 +2,51 @@
 %  cv.tex — main document
 %  Build:  latexmk -pdf cv.tex   (or run `make`)
 %==============================================================================
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,a4paper]{article}
 
 % --- Layout & fonts --------------------------------------------------------
+% cmap + lmodern + glyphtounicode make the PDF's text layer extract cleanly
+% (fixes fi/fl ligatures like "Schaeffler"/"Office" for ATS & AI parsers).
+\usepackage{cmap}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage[margin=1.8cm]{geometry}
+\usepackage{lmodern}
+\usepackage[margin=1.4cm]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\input{glyphtounicode}
+\pdfgentounicode=1
+
+% --- Personal data (edit these) --------------------------------------------
+\newcommand{\myname}{Gerardo Domínguez Ramírez}
+\newcommand{\mytitle}{Data \& Analytics Engineer}
+\newcommand{\myemail}{gerardo.domra@gmail.com}
+\newcommand{\mygithub}{curbsidenigma}
+\newcommand{\mylinkedin}{gerardodominguezramirez}
+\newcommand{\myorcid}{0000-0003-4782-7008}
+\newcommand{\mylocation}{Mexico City, Mexico · Open to Remote}
 
 % --- Colours ---------------------------------------------------------------
 \definecolor{accent}{HTML}{2C3E50}
-\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
 
-% --- Personal data (edit these) --------------------------------------------
-\newcommand{\myname}{Your Name}
-\newcommand{\mytitle}{Software Engineer}
-\newcommand{\myemail}{curbsidenigma@gmail.com}
-\newcommand{\myphone}{+1 555 123 4567}
-\newcommand{\mygithub}{yourhandle}
-\newcommand{\mylinkedin}{yourhandle}
-\newcommand{\mylocation}{City, Country}
+% --- PDF metadata (helps ATS / AI parsers extract structured data) ----------
+\hypersetup{
+  colorlinks=true, urlcolor=accent, linkcolor=accent,
+  pdftitle={Gerardo Domínguez Ramírez — Data \& Analytics Engineer},
+  pdfauthor={Gerardo Domínguez Ramírez},
+  pdfsubject={Curriculum Vitae},
+  pdfkeywords={Data Engineer, Analytics Engineer, Business Intelligence, SQL,
+    Python, ETL, Power BI, Data Warehousing, Automation, Power Automate,
+    Machine Learning, LLM, Clean Code, Technical Writing}
+}
 
 % --- Section styling -------------------------------------------------------
 \titleformat{\section}
   {\Large\bfseries\color{accent}}{}{0pt}{}[\titlerule]
-\titlespacing{\section}{0pt}{12pt}{6pt}
-\setlist[itemize]{leftmargin=1.2em, itemsep=1pt, topsep=2pt}
+\titlespacing{\section}{0pt}{5pt}{3pt}
+\setlist[itemize]{leftmargin=1.2em, itemsep=0.5pt, topsep=1pt}
 \pagestyle{empty}
 
 % --- Handy macros ----------------------------------------------------------
@@ -46,9 +62,9 @@
 \input{src/header.tex}
 
 \input{src/sections/summary.tex}
-\input{src/sections/experience.tex}
-\input{src/sections/education.tex}
 \input{src/sections/skills.tex}
+\input{src/sections/experience.tex}
 \input{src/sections/projects.tex}
+\input{src/sections/education.tex}
 
 \end{document}
