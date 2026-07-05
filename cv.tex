@@ -1,0 +1,54 @@
+%==============================================================================
+%  cv.tex — main document
+%  Build:  latexmk -pdf cv.tex   (or run `make`)
+%==============================================================================
+\documentclass[11pt,a4paper]{article}
+
+% --- Layout & fonts --------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.8cm]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% --- Colours ---------------------------------------------------------------
+\definecolor{accent}{HTML}{2C3E50}
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+% --- Personal data (edit these) --------------------------------------------
+\newcommand{\myname}{Your Name}
+\newcommand{\mytitle}{Software Engineer}
+\newcommand{\myemail}{curbsidenigma@gmail.com}
+\newcommand{\myphone}{+1 555 123 4567}
+\newcommand{\mygithub}{yourhandle}
+\newcommand{\mylinkedin}{yourhandle}
+\newcommand{\mylocation}{City, Country}
+
+% --- Section styling -------------------------------------------------------
+\titleformat{\section}
+  {\Large\bfseries\color{accent}}{}{0pt}{}[\titlerule]
+\titlespacing{\section}{0pt}{12pt}{6pt}
+\setlist[itemize]{leftmargin=1.2em, itemsep=1pt, topsep=2pt}
+\pagestyle{empty}
+
+% --- Handy macros ----------------------------------------------------------
+% \entry{Role}{Organisation}{Dates}{Location}
+\newcommand{\entry}[4]{%
+  \noindent\textbf{#1} \hfill \textbf{#3}\\
+  \textit{#2} \hfill \textit{#4}\par\vspace{2pt}%
+}
+
+%==============================================================================
+\begin{document}
+
+\input{src/header.tex}
+
+\input{src/sections/summary.tex}
+\input{src/sections/experience.tex}
+\input{src/sections/education.tex}
+\input{src/sections/skills.tex}
+\input{src/sections/projects.tex}
+
+\end{document}

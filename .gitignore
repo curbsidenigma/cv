@@ -1,0 +1,28 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+# Editor / OS
+.DS_Store
+*.swp
+.vscode/
+
+# Claude Code local settings and memory
+.claude/
+
+# Build output — keep the PDF out of git; CI publishes it to GitHub Pages.
+# Comment the next line if you DO want to commit the compiled CV.
+cv.pdf
