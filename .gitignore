@@ -29,3 +29,4 @@ temp/
 # Build output — keep the PDF out of git; CI publishes it to GitHub Pages.
 # Comment the next line if you DO want to commit the compiled CV.
 cv.pdf
+_site/
