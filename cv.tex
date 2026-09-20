@@ -1,23 +1,23 @@
 %==============================================================================
 %  cv.tex — main document
-%  Build:  latexmk -pdf cv.tex   (or run `make`)
+%  Build:  latexmk -xelatex cv.tex   (or run `make`)
 %==============================================================================
 \documentclass[10pt,a4paper]{article}
 
 % --- Layout & fonts --------------------------------------------------------
-% cmap + lmodern + glyphtounicode make the PDF's text layer extract cleanly
-% (fixes fi/fl ligatures like "Schaeffler"/"Office" for ATS & AI parsers).
-\usepackage{cmap}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{lmodern}
+\usepackage{fontspec}
+\setmainfont{NunitoSans}[
+  Path=assets/fonts/,
+  Extension=.ttf,
+  UprightFont=*-Regular,
+  BoldFont=*-Bold
+]
+\newfontfamily\displayfont{NunitoSans-ExtraBold.ttf}[Path=assets/fonts/,LetterSpace=-2]
 \usepackage[margin=1.4cm]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\input{glyphtounicode}
-\pdfgentounicode=1
 
 % --- Personal data (edit these) --------------------------------------------
 \newcommand{\myname}{Gerardo Domínguez Ramírez}
@@ -29,7 +29,9 @@
 \newcommand{\mylocation}{Mexico City, Mexico · Open to Remote}
 
 % --- Colours ---------------------------------------------------------------
-\definecolor{accent}{HTML}{2C3E50}
+\definecolor{accent}{HTML}{202020}
+\definecolor{secondary}{HTML}{555555}
+\definecolor{divider}{HTML}{D6D6D6}
 
 % --- PDF metadata (helps ATS / AI parsers extract structured data) ----------
 \hypersetup{
@@ -44,20 +46,24 @@
 
 % --- Section styling -------------------------------------------------------
 \titleformat{\section}
-  {\Large\bfseries\color{accent}}{}{0pt}{}[\titlerule]
-\titlespacing{\section}{0pt}{5pt}{3pt}
-\setlist[itemize]{leftmargin=1.2em, itemsep=0.5pt, topsep=1pt}
+  {\fontsize{11}{13}\selectfont\displayfont\color{accent}}{}{0pt}{}[{\color{divider}\titlerule[0.3pt]}]
+\titlespacing{\section}{0pt}{9pt}{3pt}
+\setlist[itemize]{leftmargin=1.1em, itemsep=1pt, topsep=2pt, parsep=0pt, partopsep=0pt}
+\setlist[itemize,2]{leftmargin=1em, label=\textendash, topsep=1pt}
+\setlength{\parindent}{0pt}
 \pagestyle{empty}
 
 % --- Handy macros ----------------------------------------------------------
 % \entry{Role}{Organisation}{Dates}{Location}
 \newcommand{\entry}[4]{%
-  \noindent\textbf{#1} \hfill \textbf{#3}\\
-  \textit{#2} \hfill \textit{#4}\par\vspace{2pt}%
+  \noindent\textbf{#1} \hfill {\small\color{secondary}#3}\\
+  {\color{secondary}#2 \hfill {\small #4}}\par\vspace{1pt}%
 }
 
 %==============================================================================
 \begin{document}
+\color{accent}
+\raggedright
 
 \input{src/header.tex}
 

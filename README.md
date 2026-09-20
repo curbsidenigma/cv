@@ -20,20 +20,22 @@ src/
     skills.tex
     projects.tex
 scripts/check_pdf.py   # PDF quality checks shared by local builds and CI
+assets/fonts/          # bundled Nunito Sans weights and SIL OFL license
 ```
 
 ## Build
 
-Requires a TeX distribution (TeX Live / MiKTeX) with `latexmk` and pdfLaTeX.
-Packages used: `cmap`, `fontenc`, `inputenc`, `lmodern` (Latin Modern fonts),
-`geometry`, `enumitem`, `titlesec`, `hyperref`, `xcolor`, and `glyphtounicode`.
+Requires a TeX distribution (TeX Live / MiKTeX) with `latexmk` and XeLaTeX.
+Packages used: `fontspec`, `geometry`, `enumitem`, `titlesec`, `hyperref`, and
+`xcolor`. Nunito Sans is loaded from `assets/fonts/`; no system font installation
+or font download is needed to build the PDF.
 PDF checks also require Python 3 and Poppler (`pdfinfo`, `pdftotext`).
 
 On Debian/Ubuntu:
 
 ```bash
 sudo apt-get update
-sudo apt-get install make latexmk texlive-latex-base texlive-latex-recommended texlive-latex-extra lmodern python3 poppler-utils
+sudo apt-get install make latexmk texlive-xetex texlive-latex-extra python3 poppler-utils
 ```
 
 ```bash
@@ -43,7 +45,7 @@ make watch    # rebuild on save
 make clean    # remove build artifacts
 ```
 
-Or directly: `latexmk -pdf cv.tex`.
+Or directly: `latexmk -xelatex cv.tex`.
 
 `make check` rejects extra pages, overfull boxes, missing glyphs, missing
 sections, and author/title metadata that do not match the extracted text.
@@ -82,4 +84,6 @@ there and `\input`-ing it from `cv.tex`.
 
 ## License
 
-See [LICENSE](LICENSE).
+See [LICENSE](LICENSE) for the source. Bundled Nunito Sans fonts use the
+[SIL Open Font License](assets/fonts/OFL.txt); see their
+[provenance](assets/fonts/README.md).

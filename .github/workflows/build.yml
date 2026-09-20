@@ -28,6 +28,7 @@ jobs:
         uses: xu-cheng/latex-action@e2f99d4b3685b0da93f97e1b86ad8fab81105098 # v3
         with:
           root_file: cv.tex
+          latexmk_use_xelatex: true
           docker_image: ghcr.io/xu-cheng/texlive-full@sha256:11383430b9a3e48c0b79339f34d8092f942f897d91ab3749d4899d06731fea7f
 
       - name: Check PDF
